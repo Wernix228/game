@@ -23,12 +23,12 @@ public class Player extends Entity {
     }
 
     public void update() {
-        if (KeyHandler.upPressed) worldY += speed;
-        if (KeyHandler.downPressed) worldY -= speed;
+        if (KeyHandler.upPressed) worldY -= speed;
+        if (KeyHandler.downPressed) worldY += speed;
         if (KeyHandler.leftPressed) worldX -= speed;
         if (KeyHandler.rightPressed) worldX += speed;
 
-        System.out.println("Player: X:" + worldX + "  Y:" + worldY);
+//        System.out.println("Player: X:" + worldX + "  Y:" + worldY);
     }
 
     public void draw(SpriteBatch batch) {

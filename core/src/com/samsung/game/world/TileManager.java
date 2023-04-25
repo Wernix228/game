@@ -1,11 +1,13 @@
 package com.samsung.game.world;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.samsung.game.entity.Player;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.Arrays;
 
 public class TileManager {
@@ -26,7 +28,7 @@ public class TileManager {
 
     private void loadMap(String map) {
         tileNum = new int[20][20];
-        FileHandle fileHandle = new FileHandle(map);
+        FileHandle fileHandle = Gdx.files.internal(map);
         BufferedReader reader = new BufferedReader(fileHandle.reader());
         //BufferedReader не робит на андроид
         for (int i = 0; i < tileNum.length; i++) {
@@ -54,20 +56,20 @@ public class TileManager {
 
         while (worldCol < tileNum.length && worldRow < tileNum[0].length) {
 
-            int mapTileNum = tileNum[worldCol][worldRow];
+            int mapTileNum = tileNum[worldRow][worldCol];
 
             int worldX = worldCol * 32;
             int worldY = worldRow * 32;
             int screenX = worldX - player.getWorldX() + player.getScreenX();
             int screenY = worldY - player.getWorldY() + player.getScreenY();
 
-            if (worldX + 32 > player.getWorldX() - player.getScreenX() &&
-                    worldX - 32 < player.getWorldX() + player.getScreenX() &&
-                    worldY + 32 > player.getWorldY() - player.getScreenY() &&
-                    worldY - 32 < player.getWorldY() + player.getScreenY()) {
+//            if (worldX + 32 > player.getWorldX() - player.getScreenX() &&
+//                    worldX - 32 < player.getWorldX() + player.getScreenX() &&
+//                    worldY + 32 > player.getWorldY() - player.getScreenY() &&
+//                    worldY - 32 < player.getWorldY() + player.getScreenY()) {
 
-                batch.draw(tiles[mapTileNum].getTexture(), screenX, screenY, 32, 32);
-            }
+                batch.draw(tiles[mapTileNum].getTexture(), screenX, -screenY+256, 32, 32);
+//            }
 
             worldCol++;
 
@@ -78,4 +80,7 @@ public class TileManager {
         }
     }
 
+    public int[][] getTileNum() {
+        return tileNum;
+    }
 }

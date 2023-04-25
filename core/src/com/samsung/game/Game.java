@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.samsung.game.entity.Player;
+import com.samsung.game.world.CollisionChecker;
 import com.samsung.game.world.TileManager;
 
 public class Game extends ApplicationAdapter {
@@ -18,6 +19,9 @@ public class Game extends ApplicationAdapter {
     KeyHandler keyHandler;
     Player player;
     TileManager tileManager;
+    CollisionChecker checker;
+
+    private int time = 0;
 
     @Override
     public void create() {
@@ -26,7 +30,8 @@ public class Game extends ApplicationAdapter {
         batch = new SpriteBatch();
         keyHandler = new KeyHandler();
         player = new Player();
-        tileManager = new TileManager("assets/maps/map.txt");
+        tileManager = new TileManager("maps/map.txt");
+        checker = new CollisionChecker(player,tileManager);
     }
 
     @Override
@@ -34,8 +39,11 @@ public class Game extends ApplicationAdapter {
         camera.update();
         batch.setProjectionMatrix(camera.combined);
         keyHandler.update();
+        checker.update();
         player.update();
         draw();
+        time++;
+        if (time >= 60 * 10) System.gc();
     }
 
     @Override
