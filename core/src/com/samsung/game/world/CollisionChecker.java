@@ -11,25 +11,37 @@ public class CollisionChecker {
         this.entity = entity;
         this.tileManager = tileManager;
     }
-    public void update(){
-        if (upCollision()) KeyHandler.upPressed = false;
-        if (downCollision()) KeyHandler.downPressed = false;
-        if (leftCollision()) KeyHandler.leftPressed = false;
-        if (rightCollision()) KeyHandler.rightPressed = false;
+
+    public void update() {
+        for (int i = 0; i < 32; i++) {
+            if (upCollision(i)) KeyHandler.upPressed = false;
+            if (downCollision(i)) KeyHandler.downPressed = false;
+            if (leftCollision(i)) KeyHandler.leftPressed = false;
+            if (rightCollision(i)) KeyHandler.rightPressed = false;
+
+            //Правая и нижняя коллизия робит
+        }
+
     }
-    private boolean upCollision(){
-        return checkTile(tileManager.getTileNum()[(entity.getWorldY())/32][(entity.getWorldX())/32]);
+
+    private boolean upCollision(int i) {
+        return checkTile(tileManager.getTileNum()[(entity.getWorldY()) / 32][(entity.getWorldX() + i) / 32]);
+
     }
-    private boolean downCollision(){
-        return checkTile(tileManager.getTileNum()[(entity.getWorldY() + 32 )/32][(entity.getWorldX())/32]);
+
+    private boolean downCollision(int i) {
+        return checkTile(tileManager.getTileNum()[(entity.getWorldY() + 32) / 32][(entity.getWorldX() + i) / 32]);
     }
-    private boolean leftCollision(){
-        return checkTile(tileManager.getTileNum()[entity.getWorldY()/32][(entity.getWorldX())/32]);
+
+    private boolean leftCollision(int i) {
+        return checkTile(tileManager.getTileNum()[(entity.getWorldY() + i) / 32][(entity.getWorldX()) / 32]);
     }
-    private boolean rightCollision(){
-        return checkTile(tileManager.getTileNum()[entity.getWorldY()/32][(entity.getWorldX() + 32 )/32]);
+
+    private boolean rightCollision(int i) {
+        return checkTile(tileManager.getTileNum()[(entity.getWorldY() + i) / 32][(entity.getWorldX() + 32) / 32]);
     }
-    private boolean checkTile(int tileNum){
+
+    private boolean checkTile(int tileNum) {
         return tileNum == 1 || tileNum == 2 || tileNum == 3;
     }
 

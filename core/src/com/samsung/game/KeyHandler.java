@@ -28,7 +28,6 @@ public class KeyHandler {
             leftPressed = (Gdx.input.getX() <= joyStick.getWidth() / 3 && Gdx.input.getY() * -1 + Gdx.graphics.getHeight() - Gdx.graphics.getHeight() / 9 <= joyStick.getHeight());
             rightPressed = (Gdx.input.getX() >= joyStick.getWidth() - joyStick.getWidth() / 3 && Gdx.input.getX() <= joyStick.getWidth() && Gdx.input.getY() * -1 + Gdx.graphics.getHeight() - Gdx.graphics.getHeight() / 9 <= joyStick.getHeight());
             downPressed = (Gdx.input.getY() * -1 + Gdx.graphics.getHeight() <= joyStick.getHeight() / 3 && Gdx.input.getX() <= joyStick.getWidth());
-            System.out.println(Gdx.input.getY() * -1 + Gdx.graphics.getHeight());
             upPressed = (Gdx.input.getY() * -1 + Gdx.graphics.getHeight() >= joyStick.getHeight() && Gdx.input.getX() <= joyStick.getWidth() && Gdx.input.getY() * -1 + Gdx.graphics.getHeight() <= Gdx.graphics.getWidth()/4);
         }
     }

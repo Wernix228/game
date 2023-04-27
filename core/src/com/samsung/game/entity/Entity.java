@@ -12,6 +12,7 @@ public class Entity {
     protected Texture texture;
     protected int tileSize = 32;
     protected int worldX,worldY;
+    protected String direction = "down";
 
     public int getWorldX() {
         return worldX;
@@ -27,5 +28,9 @@ public class Entity {
 
     public int getScreenY() {
         return screenY;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }
