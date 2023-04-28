@@ -40,7 +40,7 @@ public class CollisionChecker {
     }
 
     private boolean checkTile(int tileNum) {
-        return tileNum == 1 || tileNum == 2 || tileNum == 3;
+        return tileNum == 1 || tileNum == 2 || tileNum == 4;
     }
 
 }

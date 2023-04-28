@@ -21,13 +21,17 @@ public class TileManager {
     }
 
     private void loadTile() {
-        tiles = new Tile[5];
+        tiles = new Tile[6];
         tiles[0] = new Tile("tiles/grass.png");
-        tiles[1] = new Tile("tiles/tree.png");
+        tiles[1] = new Tile("tiles/wall.png");
+        tiles[2] = new Tile("tiles/water.png");
+        tiles[3] = new Tile("tiles/earth.png");
+        tiles[4] = new Tile("tiles/tree.png");
+        tiles[5] = new Tile("tiles/sand.png");
     }
 
     private void loadMap(String map) {
-        tileNum = new int[20][20];
+        tileNum = new int[50][50];
         FileHandle fileHandle = Gdx.files.internal(map);
         BufferedReader reader = new BufferedReader(fileHandle.reader());
         //BufferedReader не робит на андроид
@@ -67,7 +71,6 @@ public class TileManager {
 //                    worldX - 32 < player.getWorldX() + player.getScreenX() &&
 //                    worldY + 32 > player.getWorldY() - player.getScreenY() &&
 //                    worldY - 32 < player.getWorldY() + player.getScreenY()) {
-
                 batch.draw(tiles[mapTileNum].getTexture(), screenX, -screenY+256, 32, 32);
 //            }
 

@@ -30,7 +30,7 @@ public class Game extends ApplicationAdapter {
         batch = new SpriteBatch();
         keyHandler = new KeyHandler();
         player = new Player();
-        tileManager = new TileManager("maps/map.txt");
+        tileManager = new TileManager("maps/world01.txt");
         checker = new CollisionChecker(player,tileManager);
     }
 

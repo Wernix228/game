@@ -16,8 +16,8 @@ public class Player extends Entity {
     private void setDefaultValues() {
         screenX = tileSize * 8 - tileSize / 2;
         screenY = (int) (tileSize * 4.5f - tileSize / 2);
-        worldX = screenX;
-        worldY = screenY;
+        worldX = 32 * 23;
+        worldY = 32 * 21;
         speed = 2;
         texture = new Texture("player/player.png");
         rectangle = new Rectangle(0, 0, 32, 32);
