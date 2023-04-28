@@ -13,13 +13,11 @@ public class CollisionChecker {
     }
 
     public void update() {
-        for (int i = 0; i < 32; i++) {
+        for (int i = 2; i < 30; i++) {
             if (upCollision(i)) KeyHandler.upPressed = false;
             if (downCollision(i)) KeyHandler.downPressed = false;
             if (leftCollision(i)) KeyHandler.leftPressed = false;
             if (rightCollision(i)) KeyHandler.rightPressed = false;
-
-            //Правая и нижняя коллизия робит
         }
 
     }
