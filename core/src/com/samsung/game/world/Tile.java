@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Tile {
 
-    private Texture texture;
+    private final Texture texture;
 
     public Tile(String texture){
         this.texture = new Texture(texture);

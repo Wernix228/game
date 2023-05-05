@@ -1,12 +1,8 @@
 package com.samsung.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.samsung.game.entity.Player;
 import com.samsung.game.world.CollisionChecker;
@@ -14,21 +10,24 @@ import com.samsung.game.world.TileManager;
 
 public class Game extends ApplicationAdapter {
 
+    public static String platform;
     OrthographicCamera camera;
     SpriteBatch batch;
     KeyHandler keyHandler;
     Player player;
     TileManager tileManager;
     CollisionChecker checker;
-
     private int time = 0;
+    public Game(){
+        platform = "PC";
+    }
 
     @Override
     public void create() {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 512, 288);
         batch = new SpriteBatch();
-        keyHandler = new KeyHandler();
+        keyHandler = new KeyHandler(platform);
         player = new Player();
         tileManager = new TileManager("maps/world01.txt");
         checker = new CollisionChecker(player,tileManager);
@@ -56,7 +55,7 @@ public class Game extends ApplicationAdapter {
         batch.begin();
         tileManager.draw(batch,player);
         player.draw(batch);
-        keyHandler.draw(batch);
+        if (platform.equals("Android")) keyHandler.draw(batch);
         batch.end();
     }
 }

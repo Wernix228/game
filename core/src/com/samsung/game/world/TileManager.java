@@ -7,7 +7,6 @@ import com.samsung.game.entity.Player;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.Arrays;
 
 public class TileManager {
@@ -34,10 +33,9 @@ public class TileManager {
         tileNum = new int[50][50];
         FileHandle fileHandle = Gdx.files.internal(map);
         BufferedReader reader = new BufferedReader(fileHandle.reader());
-        //BufferedReader не робит на андроид
         for (int i = 0; i < tileNum.length; i++) {
 
-            String line = null;
+            String line;
             try {
                 line = reader.readLine();
             } catch (IOException e) {
@@ -49,8 +47,8 @@ public class TileManager {
                 tileNum[i][j] = Integer.parseInt(tileNumbers[j]);
             }
         }
-        for (int i = 0; i < tileNum.length; i++) {
-            System.out.println(Arrays.toString(tileNum[i]));
+        for (int[] ints : tileNum) {
+            System.out.println(Arrays.toString(ints));
         }
     }
 
@@ -67,12 +65,7 @@ public class TileManager {
             int screenX = worldX - player.getWorldX() + player.getScreenX();
             int screenY = worldY - player.getWorldY() + player.getScreenY();
 
-//            if (worldX + 32 > player.getWorldX() - player.getScreenX() &&
-//                    worldX - 32 < player.getWorldX() + player.getScreenX() &&
-//                    worldY + 32 > player.getWorldY() - player.getScreenY() &&
-//                    worldY - 32 < player.getWorldY() + player.getScreenY()) {
-                batch.draw(tiles[mapTileNum].getTexture(), screenX, -screenY+256, 32, 32);
-//            }
+            batch.draw(tiles[mapTileNum].getTexture(), screenX, -screenY + 256, 32, 32);
 
             worldCol++;
 
