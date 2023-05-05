@@ -2,7 +2,6 @@ package com.samsung.game;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.samsung.game.Game;
 
 import java.awt.*;
 
