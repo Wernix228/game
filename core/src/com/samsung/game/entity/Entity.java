@@ -11,8 +11,11 @@ public class Entity {
     protected Rectangle rectangle;
     protected Texture texture;
     protected int tileSize = 32;
-    protected int worldX,worldY;
+    protected int worldX, worldY;
     protected String direction = "down";
+    protected Texture up1, up2, down1, down2, left1, left2, right1, right2;
+    protected int time;
+    protected int spiteNum;
 
     public int getWorldX() {
         return worldX;

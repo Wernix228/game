@@ -11,10 +11,10 @@ public class KeyHandler {
 
     public static boolean upPressed, downPressed, leftPressed, rightPressed;
 
-    private Rectangle joyStick;
+    private Rectangle joystick;
 
     public KeyHandler() {
-        joyStick = new Rectangle(0, 0, Gdx.graphics.getWidth() / 4, Gdx.graphics.getHeight() / 3);
+        joystick = new Rectangle(0, 0, Gdx.graphics.getWidth() / 4, Gdx.graphics.getHeight() / 3);
     }
 
     public void update() {
@@ -25,14 +25,14 @@ public class KeyHandler {
         rightPressed = Gdx.input.isKeyPressed(Input.Keys.D);
 
         if (Gdx.input.isTouched()) {
-            leftPressed = (Gdx.input.getX() <= joyStick.getWidth() / 3 && Gdx.input.getY() * -1 + Gdx.graphics.getHeight() - Gdx.graphics.getHeight() / 9 <= joyStick.getHeight());
-            rightPressed = (Gdx.input.getX() >= joyStick.getWidth() - joyStick.getWidth() / 3 && Gdx.input.getX() <= joyStick.getWidth() && Gdx.input.getY() * -1 + Gdx.graphics.getHeight() - Gdx.graphics.getHeight() / 9 <= joyStick.getHeight());
-            downPressed = (Gdx.input.getY() * -1 + Gdx.graphics.getHeight() <= joyStick.getHeight() / 3 && Gdx.input.getX() <= joyStick.getWidth());
-            upPressed = (Gdx.input.getY() * -1 + Gdx.graphics.getHeight() >= joyStick.getHeight() && Gdx.input.getX() <= joyStick.getWidth() && Gdx.input.getY() * -1 + Gdx.graphics.getHeight() <= Gdx.graphics.getWidth()/4);
+            leftPressed = (Gdx.input.getX() <= joystick.getWidth() / 3 && Gdx.input.getY() * -1 + Gdx.graphics.getHeight() - Gdx.graphics.getHeight() / 9 <= joystick.getHeight());
+            rightPressed = (Gdx.input.getX() >= joystick.getWidth() - joystick.getWidth() / 3 && Gdx.input.getX() <= joystick.getWidth() && Gdx.input.getY() * -1 + Gdx.graphics.getHeight() - Gdx.graphics.getHeight() / 9 <= joystick.getHeight());
+            downPressed = (Gdx.input.getY() * -1 + Gdx.graphics.getHeight() <= joystick.getHeight() / 3 && Gdx.input.getX() <= joystick.getWidth());
+            upPressed = (Gdx.input.getY() * -1 + Gdx.graphics.getHeight() >= joystick.getHeight() && Gdx.input.getX() <= joystick.getWidth() && Gdx.input.getY() * -1 + Gdx.graphics.getHeight() <= Gdx.graphics.getWidth()/4);
         }
     }
 
     public void draw(SpriteBatch batch) {
-        batch.draw(new Texture("joystick.png"), joyStick.getX(), joyStick.getY(), 512 / 4, 512 / 4);
+        batch.draw(new Texture("joystick.png"), joystick.getX(), joystick.getY(), 512 / 4, 512 / 4);
     }
 }
